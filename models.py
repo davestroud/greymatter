@@ -1,5 +1,5 @@
 from google.appengine.api import users
-from google.appengine.ext import nbd
+from google.appengine.ext import ndb
 
 class UserPrefs(ndb.Model):
     tz_offset = ndb.FloatProperty(default=0.0)
@@ -12,9 +12,10 @@ def get_userprefs(user_id=None):
             return None
         user_id = user.user_id()
 
-key = ndb.Key('UserPrefs', user_id)
-userprefs = key.get()
-if not userprefs:
-    userprefs = UserPrefs(id=user_id)
-return userprefs
-        
+        key = ndb.Key('UserPrefs', user_id)
+    userprefs = key.get()
+    if not userprefs:
+        userprefs = UserPrefs(id=user_id)
+    return userprefs
+
+
