@@ -7,6 +7,10 @@ threadsafe: yes
 handlers:
 - url: .*
   script: main.application
+  login: required
+
+- url: .*
+  script: main.application
 
 libraries:
 - name: webapp2
